@@ -1,80 +1,20 @@
-[
-    {
-        "name": "PM SVANidhi",
-        "occupation": "street vendor",
-        "minAge": 18,
-        "maxAge": 100,
-        "maxIncome": 1000000,
-        "state": "all",
-        "benefit": "Collateral-free working capital loans of ₹15,000, ₹25,000 and ₹50,000 in progressive tranches, along with other digital and credit-related benefits.",
-        "documents": [
-            "Aadhaar Card",
-            "Bank Account",
-            "Certificate of Vending or Letter of Recommendation, where applicable"
-        ]
-    },
+{
+    "name": "PM-KISAN",
+    
+    "translations": {
+        "kn-IN": {
+            "name": "ಪ್ರಧಾನ ಮಂತ್ರಿ ಕಿಸಾನ್ ಯೋಜನೆ",
+            "benefit": "ಅರ್ಹ ರೈತ ಕುಟುಂಬಗಳಿಗೆ ವರ್ಷಕ್ಕೆ ₹6,000 ಆದಾಯ ಬೆಂಬಲ."
+        },
 
-    {
-        "name": "PM Vishwakarma",
-        "occupation": "tailor",
-        "minAge": 18,
-        "maxAge": 100,
-        "maxIncome": 1000000,
-        "state": "all",
-        "benefit": "Skill training, toolkit incentive up to ₹15,000 and collateral-free enterprise development credit support up to ₹3 lakh for eligible traditional artisans.",
-        "documents": [
-            "Aadhaar Card",
-            "Mobile Number",
-            "Bank Account",
-            "Documents/details required during registration"
-        ]
-    },
+        "te-IN": {
+            "name": "ప్రధాన్ మంత్రి కిసాన్ పథకం",
+            "benefit": "అర్హత కలిగిన రైతు కుటుంబాలకు సంవత్సరానికి ₹6,000 ఆదాయ సహాయం."
+        },
 
-    {
-        "name": "PM-KISAN",
-        "occupation": "farmer",
-        "minAge": 18,
-        "maxAge": 100,
-        "maxIncome": 1000000,
-        "state": "all",
-        "benefit": "Income support of ₹6,000 per year in three equal installments for eligible landholding farmer families.",
-        "documents": [
-            "Aadhaar Card",
-            "Land Records",
-            "Bank Account",
-            "Other documents as required by the State/UT"
-        ]
-    },
-
-    {
-        "name": "Pradhan Mantri Matsya Sampada Yojana (PMMSY)",
-        "occupation": "fisherman",
-        "minAge": 18,
-        "maxAge": 100,
-        "maxIncome": 1000000,
-        "state": "all",
-        "benefit": "Supports eligible fishers and fish workers through fisheries-sector welfare measures, including group accidental insurance and livelihood support under applicable components.",
-        "documents": [
-            "Aadhaar Card",
-            "Bank Account",
-            "Fisher/Fisheries-related Registration or ID, where applicable",
-            "Other documents as required"
-        ]
-    },
-
-    {
-        "name": "NAMASTE",
-        "occupation": "sanitation_worker",
-        "minAge": 18,
-        "maxAge": 100,
-        "maxIncome": 1000000,
-        "state": "all",
-        "benefit": "Promotes safety and dignity of sanitation workers through occupational safety, access to entitlements and livelihood support. Waste pickers are also covered under the scheme.",
-        "documents": [
-            "Aadhaar Card",
-            "Bank Account",
-            "Worker identification/profiling details",
-            "Other documents as required"
-        ]
+        "hi-IN": {
+            "name": "प्रधानमंत्री किसान योजना",
+            "benefit": "पात्र किसान परिवारों को प्रति वर्ष ₹6,000 की आय सहायता।"
+        }
     }
-]
+}

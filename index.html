@@ -1,40 +1,108 @@
 <!DOCTYPE html>
 <html>
+
 <head>
+
     <title>SchemeWise</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
     <h1>SchemeWise</h1>
 
-    <p>Find government schemes that may be suitable for you.</p>
+    <!-- LANGUAGE SELECTION -->
 
-    <label>Age:</label>
-    <input type="number" id="age">
+    <div id="languageScreen">
 
-    <br><br>
+        <h2>Select Your Language</h2>
 
-    <label>Occupation:</label>
-    <input type="text" id="occupation">
+        <button onclick="selectLanguage('kn-IN')">
+            ಕನ್ನಡ
+        </button>
 
-    <br><br>
+        <button onclick="selectLanguage('te-IN')">
+            తెలుగు
+        </button>
 
-    <label>Monthly Income:</label>
-    <input type="number" id="income">
+        <button onclick="selectLanguage('hi-IN')">
+            हिन्दी
+        </button>
 
-    <br><br>
+    </div>
 
-    <label>State:</label>
-    <input type="text" id="state">
 
-    <br><br>
+    <!-- MAIN QUESTION SCREEN -->
 
-    <button id="findButton">Find Schemes</button>
-    <div id="results"></div>
+    <div id="appScreen" style="display:none;">
+
+        <h2 id="questionNumber">
+            Question 1 of 4
+        </h2>
+
+        <h3 id="question">
+            Question
+        </h3>
+
+        <button id="speakQuestionButton">
+            🔊 Hear Question
+        </button>
+
+        <br><br>
+
+        <button id="listenButton">
+            🎤 Speak Answer
+        </button>
+
+        <p>
+            <b>Recognized Answer:</b>
+        </p>
+
+        <p id="result">
+            Waiting for your answer...
+        </p>
+
+        <p id="status">
+            Waiting...
+        </p>
+
+        <p id="attempt">
+            Attempt 1 of 5
+        </p>
+
+
+        <!-- MANUAL FALLBACK -->
+
+        <div id="manualArea" style="display:none;">
+
+            <h3>Enter your answer manually</h3>
+
+            <input
+                type="text"
+                id="manualInput"
+                placeholder="Enter answer"
+            >
+
+            <br><br>
+
+            <button id="manualSubmit">
+                Submit Answer
+            </button>
+
+        </div>
+
+
+        <!-- FINAL RESULTS -->
+
+        <div id="results"></div>
+
+    </div>
+
 
     <script src="script.js"></script>
 
 </body>
+
 </html>
