@@ -1,964 +1,448 @@
-// =====================================================
-// SCHEMEWISE - VOICE + ELIGIBILITY
-// =====================================================
-
-// ---------------- LANGUAGE ----------------
-
 const languages = {
-
     "kn-IN": {
+        name: "ಕನ್ನಡ",
+        greeting: "ನಮಸ್ಕಾರ! ಸ್ಕೀಮ್‌ವೈಸ್‌ಗೆ ಸ್ವಾಗತ. ಕನ್ನಡಕ್ಕಾಗಿ 1 ಒತ್ತಿ",
         questions: {
             age: "ನಿಮ್ಮ ವಯಸ್ಸು ಎಷ್ಟು?",
             occupation: "ನಿಮ್ಮ ಉದ್ಯೋಗ ಏನು?",
             income: "ನಿಮ್ಮ ಮಾಸಿಕ ಆದಾಯ ಎಷ್ಟು?",
             state: "ನೀವು ಯಾವ ರಾಜ್ಯದಲ್ಲಿ ವಾಸಿಸುತ್ತೀರಿ?"
+        },
+        text: {
+            question: "ಪ್ರಶ್ನೆ",
+            of: "ರಲ್ಲಿ",
+            attempt: "ಪ್ರಯತ್ನ",
+            answerLabel: "ಗುರುತಿಸಿದ ಉತ್ತರ",
+            speakAnswer: "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಹೇಳಿ",
+            hearQuestion: "ಪ್ರಶ್ನೆಯನ್ನು ಕೇಳಿ",
+            waiting: "ನಿಮ್ಮ ಉತ್ತರಕ್ಕಾಗಿ ಕಾಯಲಾಗುತ್ತಿದೆ...",
+            listening: "ಕೇಳಲಾಗುತ್ತಿದೆ...",
+            yourTurn: "ಈಗ ನಿಮ್ಮ ಸರದಿ. ಉತ್ತರಿಸಲು ಮೈಕ್ರೊಫೋನ್ ಬಟನ್ ಒತ್ತಿ.",
+            accepted: "ಉತ್ತರ ಸ್ವೀಕರಿಸಲಾಗಿದೆ.",
+            retry: "ಉತ್ತರ ಅರ್ಥವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+            enterAnswer: "ನಿಮ್ಮ ಉತ್ತರವನ್ನು ಇಲ್ಲಿ ನಮೂದಿಸಿ",
+            submit: "ಉತ್ತರ ಸಲ್ಲಿಸಿ",
+            complete: "ಎಲ್ಲಾ ಮಾಹಿತಿ ಸಂಗ್ರಹಿಸಲಾಗಿದೆ",
+            finding: "ನಿಮಗೆ ಸೂಕ್ತವಾದ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕಲಾಗುತ್ತಿದೆ...",
+            schemes: "ನಿಮಗೆ ಹೊಂದುವ ಯೋಜನೆಗಳು",
+            benefit: "ಪ್ರಯೋಜನ",
+            documents: "ಅಗತ್ಯವಿರುವ ದಾಖಲೆಗಳು",
+            eligibility: "ನೀವು ನೀಡಿದ ಮಾಹಿತಿಯ ಆಧಾರದ ಮೇಲೆ ಈ ಯೋಜನೆಗೆ ಅರ್ಹರಾಗಿರಬಹುದು. ಅಂತಿಮ ಅರ್ಹತೆಯನ್ನು ಅಧಿಕೃತ ಇಲಾಖೆಯೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ.",
+            noMatch: "ಹೊಂದುವ ಯೋಜನೆ ಕಂಡುಬಂದಿಲ್ಲ",
+            noMatchDetails: "ನೀವು ನೀಡಿದ ಮಾಹಿತಿಯ ಆಧಾರದ ಮೇಲೆ ಯಾವುದೇ ಯೋಜನೆ ಕಂಡುಬಂದಿಲ್ಲ. ನಿಮ್ಮ ಮಾಹಿತಿಯನ್ನು ಪರಿಶೀಲಿಸಿ ಮತ್ತೆ ಪ್ರಯತ್ನಿಸಿ.",
+            matchingDone: "ಯೋಜನೆಗಳ ಹುಡುಕಾಟ ಪೂರ್ಣಗೊಂಡಿದೆ.",
+            dataError: "ಯೋಜನೆಗಳ ಮಾಹಿತಿಯನ್ನು ಲೋಡ್ ಮಾಡಲು ಸಾಧ್ಯವಾಗಲಿಲ್ಲ. ದಯವಿಟ್ಟು ಇಂಟರ್ನೆಟ್ ಸಂಪರ್ಕ ಅಥವಾ ಸ್ಥಳೀಯ ಸರ್ವರ್ ಪರಿಶೀಲಿಸಿ.",
+            voiceUnavailable: "ಈ ಬ್ರೌಸರ್‌ನಲ್ಲಿ ಧ್ವನಿ ಗುರುತಿಸುವಿಕೆ ಲಭ್ಯವಿಲ್ಲ. ದಯವಿಟ್ಟು ಉತ್ತರವನ್ನು ಟೈಪ್ ಮಾಡಿ.",
+            intro: "ನಿಮ್ಮ ವಯಸ್ಸು, ಉದ್ಯೋಗ, ಆದಾಯ ಮತ್ತು ರಾಜ್ಯವನ್ನು ಕೇಳಿ ಸೂಕ್ತ ಸರ್ಕಾರಿ ಯೋಜನೆಗಳನ್ನು ಹುಡುಕುತ್ತೇವೆ."
         }
     },
-
-    "te-IN": {
-        questions: {
-            age: "మీ వయస్సు ఎంత?",
-            occupation: "మీ వృత్తి ఏమిటి?",
-            income: "మీ నెలవారీ ఆదాయం ఎంత?",
-            state: "మీరు ఏ రాష్ట్రంలో నివసిస్తున్నారు?"
-        }
-    },
-
     "hi-IN": {
+        name: "हिन्दी",
+        greeting: "नमस्कार! स्कीमवाइज़ में आपका स्वागत है।  हिंदी के लिए 2 दबाएँ,",
         questions: {
             age: "आपकी उम्र कितनी है?",
             occupation: "आपका व्यवसाय क्या है?",
             income: "आपकी मासिक आय कितनी है?",
             state: "आप किस राज्य में रहते हैं?"
+        },
+        text: {
+            question: "प्रश्न",
+            of: "में से",
+            attempt: "प्रयास",
+            answerLabel: "पहचाना गया जवाब",
+            speakAnswer: "अपना जवाब बोलें",
+            hearQuestion: "प्रश्न सुनें",
+            waiting: "आपके जवाब की प्रतीक्षा है...",
+            listening: "सुना जा रहा है...",
+            yourTurn: "अब आपकी बारी है। जवाब देने के लिए माइक्रोफ़ोन बटन दबाएँ।",
+            accepted: "जवाब स्वीकार किया गया।",
+            retry: "जवाब समझ नहीं आया। कृपया फिर से कोशिश करें।",
+            enterAnswer: "अपना जवाब यहाँ लिखें",
+            submit: "जवाब भेजें",
+            complete: "सारी जानकारी मिल गई",
+            finding: "आपके लिए उपयुक्त योजनाएँ खोजी जा रही हैं...",
+            schemes: "आपके लिए संभावित योजनाएँ",
+            benefit: "लाभ",
+            documents: "ज़रूरी दस्तावेज़",
+            eligibility: "दी गई जानकारी के आधार पर आप इस योजना के लिए पात्र हो सकते हैं। अंतिम पात्रता की पुष्टि संबंधित सरकारी विभाग से करें।",
+            noMatch: "कोई उपयुक्त योजना नहीं मिली",
+            noMatchDetails: "दी गई जानकारी के आधार पर कोई योजना नहीं मिली। कृपया अपनी जानकारी जाँचकर फिर कोशिश करें।",
+            matchingDone: "योजना की खोज पूरी हुई।",
+            dataError: "योजना की जानकारी लोड नहीं हो सकी। कृपया इंटरनेट कनेक्शन या स्थानीय सर्वर जाँचें।",
+            voiceUnavailable: "इस ब्राउज़र में आवाज़ पहचान उपलब्ध नहीं है। कृपया अपना जवाब टाइप करें।",
+            intro: "हम आपकी उम्र, व्यवसाय, आय और राज्य पूछकर उपयुक्त सरकारी योजनाएँ खोजेंगे।"
+        }
+    },
+    "te-IN": {
+        name: "తెలుగు",
+        greeting: "నమస్కారం! షెమీవైస్‌కు స్వాగతం  తెలుగు కోసం 3 నొక్కండి.",
+        questions: {
+            age: "మీ వయస్సు ఎంత?",
+            occupation: "మీ వృత్తి ఏమిటి?",
+            income: "మీ నెలవారీ ఆదాయం ఎంత?",
+            state: "మీరు ఏ రాష్ట్రంలో నివసిస్తున్నారు?"
+        },
+        text: {
+            question: "ప్రశ్న",
+            of: "లో",
+            attempt: "ప్రయత్నం",
+            answerLabel: "గుర్తించిన సమాధానం",
+            speakAnswer: "మీ సమాధానం చెప్పండి",
+            hearQuestion: "ప్రశ్న వినండి",
+            waiting: "మీ సమాధానం కోసం వేచి ఉంది...",
+            listening: "వింటోంది...",
+            yourTurn: "ఇప్పుడు మీ వంతు. సమాధానం చెప్పడానికి మైక్రోఫోన్ బటన్ నొక్కండి.",
+            accepted: "సమాధానం స్వీకరించబడింది.",
+            retry: "సమాధానం అర్థం కాలేదు. దయచేసి మళ్లీ ప్రయత్నించండి.",
+            enterAnswer: "మీ సమాధానాన్ని ఇక్కడ టైప్ చేయండి",
+            submit: "సమాధానం సమర్పించండి",
+            complete: "అవసరమైన సమాచారం సేకరించబడింది",
+            finding: "మీకు సరిపోయే పథకాలను వెతుకుతోంది...",
+            schemes: "మీకు సరిపోయే పథకాలు",
+            benefit: "ప్రయోజనం",
+            documents: "అవసరమైన పత్రాలు",
+            eligibility: "మీరు అందించిన సమాచారం ఆధారంగా ఈ పథకానికి అర్హులు కావచ్చు. తుది అర్హతను సంబంధిత ప్రభుత్వ శాఖతో నిర్ధారించండి.",
+            noMatch: "సరిపోయే పథకం కనుగొనబడలేదు",
+            noMatchDetails: "మీరు అందించిన సమాచారం ఆధారంగా పథకం కనుగొనబడలేదు. దయచేసి వివరాలను తనిఖీ చేసి మళ్లీ ప్రయత్నించండి.",
+            matchingDone: "పథకాల శోధన పూర్తయింది.",
+            dataError: "పథకాల సమాచారాన్ని లోడ్ చేయలేకపోయాము. దయచేసి ఇంటర్నెట్ కనెక్షన్ లేదా స్థానిక సర్వర్‌ను తనిఖీ చేయండి.",
+            voiceUnavailable: "ఈ బ్రౌజర్‌లో వాయిస్ గుర్తింపు అందుబాటులో లేదు. దయచేసి మీ సమాధానాన్ని టైప్ చేయండి.",
+            intro: "మీ వయస్సు, వృత్తి, ఆదాయం మరియు రాష్ట్రం అడిగి సరిపోయే ప్రభుత్వ పథకాలను వెతుకుతాము."
         }
     }
-
 };
-
-
-// ---------------- VARIABLES ----------------
 
 let selectedLanguage = "kn-IN";
-
 let currentQuestion = 0;
-
 let attempts = 0;
-
 const maxAttempts = 5;
-
-let userData = {
-    age: null,
-    occupation: "",
-    income: null,
-    state: ""
-};
-
-
-const questionKeys = [
-    "age",
-    "occupation",
-    "income",
-    "state"
-];
-
-
-// =====================================================
-// SCHEMES
-// =====================================================
-
-// We keep a backup copy here so the app will still work
-// even if schemes.json has a loading problem.
-
-const schemes = [
-
-    {
-        name: "PM SVANidhi",
-        occupation: "street_vendor",
-        minAge: 18,
-        maxAge: 100,
-        maxIncome: 1000000,
-        state: "all",
-        benefit:
-            "Collateral-free working capital loans for eligible street vendors.",
-        documents: [
-            "Aadhaar Card",
-            "Bank Account",
-            "Certificate of Vending or Letter of Recommendation, where applicable"
-        ]
-    },
-
-    {
-        name: "PM Vishwakarma",
-        occupation: "tailor",
-        minAge: 18,
-        maxAge: 100,
-        maxIncome: 1000000,
-        state: "all",
-        benefit:
-            "Skill training, toolkit incentive and credit support for eligible traditional artisans.",
-        documents: [
-            "Aadhaar Card",
-            "Mobile Number",
-            "Bank Account"
-        ]
-    },
-
-    {
-        name: "ప్రధాన మంత్రి కిసాన్ సమ్మాన్ నిధి (PM-KISAN)",
-        occupation: "farmer",
-        minAge: 18,
-        maxAge: 100,
-        maxIncome: 1000000,
-        state: "all",
-        benefit:
-            "ప్రతి సంవత్సరం ₹6,000 మూడు సమాన కిస్తలలో ఇచ్చబడుతుంది.",
-        documents: [
-            "ఆధార్ కార్డ్",
-                    "భూమి రికార్డ్",
-                    "బ్యాన్క్ ఖాతా"
-        ]
-    },
-
-    {
-        name: "ప్రధాన మంత్రి మత్స్య సంపదा యోజన (PMMSY)",
-        occupation: "fisherman",
-        minAge: 18,
-        maxAge: 100,
-        maxIncome: 1000000,
-        state: "all",
-        benefit:
-            "Support for eligible fishers and fisheries-sector beneficiaries.",
-        documents: [
-            "Aadhaar Card",
-            "Bank Account",
-            "Fisheries-related identification, where applicable"
-        ]
-    },
-
-    {
-        name: "NAMASTE",
-        occupation: "sanitation_worker",
-        minAge: 18,
-        maxAge: 100,
-        maxIncome: 1000000,
-        state: "all",
-        benefit:
-            "Support for safety, dignity, social security and livelihood opportunities for eligible sanitation workers.",
-        documents: [
-            "Aadhaar Card",
-            "Bank Account",
-            "Worker identification details"
-        ]
+const questionKeys = ["age", "occupation", "income", "state"];
+const userData = { age: null, occupation: "", income: null, state: "" };
+const schemesPromise = fetch("schemes.json").then(function (response) {
+    if (!response.ok) {
+        throw new Error("Could not load schemes.json (" + response.status + ").");
     }
+    return response.json();
+}).then(function (data) {
+    if (!Array.isArray(data) || data.some(function (scheme) {
+        return !scheme || typeof scheme.occupation !== "string" || !scheme.translations;
+    })) {
+        throw new Error("schemes.json has an invalid scheme list.");
+    }
+    return data;
+});
 
-];
+const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+const recognition = SpeechRecognition ? new SpeechRecognition() : null;
 
-
-// =====================================================
-// SPEECH RECOGNITION
-// =====================================================
-
-const SpeechRecognition =
-    window.SpeechRecognition ||
-    window.webkitSpeechRecognition;
-
-let recognition = null;
-
-if (SpeechRecognition) {
-
-    recognition = new SpeechRecognition();
-
+if (recognition) {
     recognition.continuous = false;
-
     recognition.interimResults = false;
-
 } else {
-
-    alert(
-        "Please use Google Chrome for voice input."
-    );
-
+    document.getElementById("status").textContent = languages[selectedLanguage].text.voiceUnavailable;
+    document.getElementById("manualArea").style.display = "block";
 }
 
+function speakText(text, language, onEnd) {
+    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+        return;
+    }
 
-// =====================================================
-// LANGUAGE SELECTION
-// =====================================================
+    const speech = new SpeechSynthesisUtterance(text);
+    speech.lang = language;
+    speech.rate = 0.9;
+    speech.onend = onEnd || null;
+    const voice = window.speechSynthesis.getVoices().find(function (availableVoice) {
+        return availableVoice.lang.toLowerCase().startsWith(language.toLowerCase());
+    });
+    if (voice) {
+        speech.voice = voice;
+    }
+    window.speechSynthesis.speak(speech);
+}
+
+function playWelcome(index) {
+    const languageCodes = Object.keys(languages);
+    if (index >= languageCodes.length) {
+        return;
+    }
+    const language = languageCodes[index];
+    speakText(languages[language].greeting, language, function () {
+        playWelcome(index + 1);
+    });
+}
+
+window.addEventListener("load", function () {
+    document.getElementById("intro").textContent = languages[selectedLanguage].text.intro;
+    playWelcome(0);
+});
+
+document.querySelectorAll("[data-language]").forEach(function (button) {
+    button.addEventListener("click", function () {
+        selectLanguage(button.dataset.language);
+    });
+});
+
+document.getElementById("replayWelcome").addEventListener("click", function () {
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
+    playWelcome(0);
+});
+
+document.addEventListener("keydown", function (event) {
+    if (document.getElementById("languageScreen").hidden) {
+        return;
+    }
+    const languageForKey = { "1": "kn-IN", "2": "hi-IN", "3": "te-IN" };
+    if (languageForKey[event.key]) {
+        selectLanguage(languageForKey[event.key]);
+    }
+});
 
 function selectLanguage(language) {
-
+    if (!languages[language]) {
+        return;
+    }
     selectedLanguage = language;
-
+    if ("speechSynthesis" in window) {
+        window.speechSynthesis.cancel();
+    }
     if (recognition) {
         recognition.lang = language;
     }
 
-    document.getElementById("languageScreen").style.display =
-        "none";
-
-    document.getElementById("appScreen").style.display =
-        "block";
-
+    const copy = languages[language].text;
+    document.documentElement.lang = language;
+    document.getElementById("languageScreen").hidden = true;
+    document.getElementById("appScreen").hidden = false;
+    document.getElementById("speakQuestionButton").textContent = "🔊 " + copy.hearQuestion;
+    document.getElementById("listenButton").textContent = "🎤 " + copy.speakAnswer;
+    document.getElementById("manualInput").placeholder = copy.enterAnswer;
+    document.getElementById("manualSubmit").textContent = copy.submit;
+    document.querySelector('label[for="manualInput"]').textContent = copy.enterAnswer;
+    document.getElementById("answerLabel").textContent = copy.answerLabel;
+    if (!recognition) {
+        document.getElementById("status").textContent = copy.voiceUnavailable;
+        document.getElementById("manualArea").hidden = false;
+    }
     currentQuestion = 0;
-
     attempts = 0;
-
     askCurrentQuestion();
 }
 
-
-// =====================================================
-// ASK QUESTION
-// =====================================================
-
 function askCurrentQuestion() {
-
     if (currentQuestion >= questionKeys.length) {
-
         finishQuestions();
-
         return;
     }
 
     attempts++;
-
-    const key =
-        questionKeys[currentQuestion];
-
-    const question =
-        languages[selectedLanguage]
-        .questions[key];
-
-
-    document.getElementById("questionNumber").innerText =
-        "Question " +
-        (currentQuestion + 1) +
-        " of " +
-        questionKeys.length;
-
-
-    document.getElementById("question").innerText =
-        question;
-
-
-    document.getElementById("attempt").innerText =
-        "Attempt " +
-        attempts +
-        " of " +
-        maxAttempts;
-
-
-    document.getElementById("result").innerText =
-        "Speak your answer...";
-
-
-    speakQuestion(question);
+    const copy = languages[selectedLanguage].text;
+    const question = languages[selectedLanguage].questions[questionKeys[currentQuestion]];
+    document.getElementById("questionNumber").textContent =
+        copy.question + " " + (currentQuestion + 1) + " " + copy.of + " " + questionKeys.length;
+    document.getElementById("question").textContent = question;
+    document.getElementById("attempt").textContent =
+        copy.attempt + " " + attempts + " " + copy.of + " " + maxAttempts;
+    document.getElementById("result").textContent = copy.waiting;
+    speakText(question, selectedLanguage, function () {
+        document.getElementById("status").textContent = copy.yourTurn;
+    });
 }
 
+document.getElementById("speakQuestionButton").addEventListener("click", function () {
+    speakText(document.getElementById("question").textContent, selectedLanguage);
+});
 
-// =====================================================
-// TEXT TO SPEECH
-// =====================================================
-
-function speakQuestion(text) {
-
-    window.speechSynthesis.cancel();
-
-    const speech =
-        new SpeechSynthesisUtterance(text);
-
-    speech.lang =
-        selectedLanguage;
-
-    speech.rate = 0.9;
-
-    speech.onend = function () {
-
-        document.getElementById("status").innerText =
-            "🎤 Your turn to speak.";
-
-    };
-
-    window.speechSynthesis.speak(speech);
-}
-
-
-// =====================================================
-// HEAR QUESTION BUTTON
-// =====================================================
-
-document
-    .getElementById("speakQuestionButton")
-    .addEventListener("click", function () {
-
-        const question =
-            document.getElementById("question").innerText;
-
-        speakQuestion(question);
-
-    });
-
-
-// =====================================================
-// SPEAK ANSWER BUTTON
-// =====================================================
-
-document
-    .getElementById("listenButton")
-    .addEventListener("click", function () {
-
-        if (!recognition) {
-            return;
-        }
-
-        recognition.lang =
-            selectedLanguage;
-
-        document.getElementById("status").innerText =
-            "🎤 Listening...";
-
-        try {
-
-            recognition.start();
-
-        } catch (error) {
-
-            console.log(error);
-
-        }
-
-    });
-
-
-// =====================================================
-// SPEECH RESULT
-// =====================================================
+document.getElementById("listenButton").addEventListener("click", function () {
+    if (!recognition) {
+        document.getElementById("manualArea").hidden = false;
+        return;
+    }
+    recognition.lang = selectedLanguage;
+    document.getElementById("status").textContent = languages[selectedLanguage].text.listening;
+    try {
+        recognition.start();
+    } catch (error) {
+        console.error("Could not start speech recognition:", error);
+        document.getElementById("status").textContent = languages[selectedLanguage].text.retry;
+    }
+});
 
 if (recognition) {
-
     recognition.onresult = function (event) {
-
-        const text =
-            event.results[0][0].transcript;
-
-
-        console.log("USER SAID:", text);
-
-
-        document.getElementById("result").innerText =
-            text;
-
-
+        const text = event.results[0][0].transcript;
+        document.getElementById("result").textContent = text;
         validateAnswer(text);
-
     };
-
 
     recognition.onerror = function (event) {
-
-        console.log(
-            "Speech error:",
-            event.error
-        );
-
+        console.error("Speech recognition error:", event.error);
         handleInvalidAnswer();
-
     };
-
 }
-
-
-// =====================================================
-// VALIDATE ANSWER
-// =====================================================
 
 function validateAnswer(text) {
-
-    const key =
-        questionKeys[currentQuestion];
-
-    let valid = false;
-
+    const key = questionKeys[currentQuestion];
+    const normalized = text.trim().toLowerCase();
     let value = null;
 
-
-    // ---------- AGE ----------
-
-    if (key === "age") {
-
-        const numbers =
-            text.match(/\d+/);
-
-        if (numbers) {
-
-            value =
-                Number(numbers[0]);
-
-            if (
-                value >= 1 &&
-                value <= 120
-            ) {
-
-                valid = true;
-
+    if (key === "age" || key === "income") {
+        const numberText = normalized.match(/[0-9\u0966-\u096F\u0C66-\u0C6F\u0CE6-\u0CEF,]+/);
+        const number = numberText && numberText[0].replace(/[\u0966-\u096F\u0C66-\u0C6F\u0CE6-\u0CEF]/g, function (digit) {
+            const code = digit.charCodeAt(0);
+            const start = code >= 0x0966 && code <= 0x096f ? 0x0966
+                : code >= 0x0c66 && code <= 0x0c6f ? 0x0c66
+                    : 0x0ce6;
+            return String(code - start);
+        }).replace(/,/g, "");
+        if (number) {
+            value = Number(number);
+            if (!Number.isFinite(value)) {
+                value = null;
             }
-
+            if (key === "age" && (value < 1 || value > 120)) {
+                value = null;
+            }
         }
-
+    } else if (key === "occupation") {
+        const occupations = {
+            farmer: ["farmer", "ರೈತ", "ರೈತರು", "రైతు", "రైతులు", "किसान", "कृषक"],
+            street_vendor: ["street vendor", "vendor", "ವೀದಿ ವ್ಯಾಪಾರಿ", "ಬೀದಿ ವ್ಯಾಪಾರಿ", "ವ್ಯಾಪಾರಿ", "ಮಾರಾಟಗಾರ", "వీధి వ్యాపారి", "వ్యాపారి", "फेरीवाला", "ठेला", "विक्रेता"],
+            tailor: ["tailor", "ದರ್ಜಿ", "ಟೈಲರ್", "ಹೊಲಿಗೆ", "కుట్టు", "టైలర్", "दर्जी", "सिलाई"],
+            fisherman: ["fisherman", "fish", "ಮೀನುಗಾರ", "ಮೀನು", "మత్స్యకారుడు", "చేపలు", "मछुआरा", "मछली"],
+            sanitation_worker: ["sanitation", "ಸಫಾಯಿ", "ಸ್ವಚ್ಛತಾ", "శానిటేషన్", "పారిశుధ్య", "सफाई", "स्वच्छता"]
+        };
+        for (const occupation in occupations) {
+            if (occupations[occupation].some(function (term) {
+                return normalized.includes(term);
+            })) {
+                value = occupation;
+                break;
+            }
+        }
+    } else if (key === "state" && normalized.length >= 2) {
+        value = normalized;
     }
 
-
-    // ---------- OCCUPATION ----------
-
-    if (key === "occupation") {
-
-        const lower =
-            text.toLowerCase();
-
-
-        if (
-            lower.includes("farmer") ||
-            lower.includes("ರೈತ") ||
-            lower.includes("రైతు") ||
-            lower.includes("किसान")
-        ) {
-
-            value = "farmer";
-
-            valid = true;
-
-        }
-
-
-        else if (
-            lower.includes("street vendor") ||
-            lower.includes("vendor") ||
-            lower.includes("ವ್ಯಾಪಾರಿ") ||
-            lower.includes("వీధి వ్యాపారి") ||
-            lower.includes("विक्रेता")
-        ) {
-
-            value = "street_vendor";
-
-            valid = true;
-
-        }
-
-
-        else if (
-            lower.includes("tailor") ||
-            lower.includes("ದರ್ಜಿ") ||
-            lower.includes("ಟೈಲರ್") ||
-            lower.includes("టైలర్") ||
-            lower.includes("दर्जी")
-        ) {
-
-            value = "tailor";
-
-            valid = true;
-
-        }
-
-
-        else if (
-            lower.includes("fisherman") ||
-            lower.includes("fish") ||
-            lower.includes("ಮೀನುಗಾರ") ||
-            lower.includes("ಮೀನು") ||
-            lower.includes("మత్స్యకారుడు") ||
-            lower.includes("मछुआरा")
-        ) {
-
-            value = "fisherman";
-
-            valid = true;
-
-        }
-
-
-        else if (
-            lower.includes("sanitation") ||
-            lower.includes("ಸಫಾಯಿ") ||
-            lower.includes("ಸ್ವಚ್ಛತಾ") ||
-            lower.includes("శానిటేషన్") ||
-            lower.includes("सफाई")
-        ) {
-
-            value = "sanitation_worker";
-
-            valid = true;
-
-        }
-
-    }
-
-
-    // ---------- INCOME ----------
-
-    if (key === "income") {
-
-        const numbers =
-            text.match(/\d+/);
-
-        if (numbers) {
-
-            value =
-                Number(numbers[0]);
-
-            valid = true;
-
-        }
-
-    }
-
-
-    // ---------- STATE ----------
-
-    if (key === "state") {
-
-        if (
-            text &&
-            text.trim().length >= 2
-        ) {
-
-            value =
-                text.trim().toLowerCase();
-
-            valid = true;
-
-        }
-
-    }
-
-
-    // ---------- VALID ----------
-
-    if (valid) {
-
-        userData[key] =
-            value;
-
-
-        console.log(
-            "ACCEPTED:",
-            key,
-            value
-        );
-
-
-        document.getElementById("status").innerText =
-            "✅ Answer accepted";
-
-
-        setTimeout(function () {
-
+    if (value !== null) {
+        userData[key] = value;
+        document.getElementById("status").textContent = languages[selectedLanguage].text.accepted;
+        window.setTimeout(function () {
             currentQuestion++;
-
             attempts = 0;
-
             askCurrentQuestion();
-
-        }, 1000);
-
-    }
-
-
-    // ---------- INVALID ----------
-
-    else {
-
+        }, 700);
+    } else {
         handleInvalidAnswer();
-
     }
-
 }
-
-
-// =====================================================
-// INVALID ANSWER
-// =====================================================
 
 function handleInvalidAnswer() {
-
-    document.getElementById("status").innerText =
-        "❌ Answer not understood. Please try again.";
-
-
+    const copy = languages[selectedLanguage].text;
+    document.getElementById("status").textContent = copy.retry;
     if (attempts < maxAttempts) {
-
-        setTimeout(function () {
-
-            askCurrentQuestion();
-
-        }, 1200);
-
-    }
-
-    else {
-
+        window.setTimeout(askCurrentQuestion, 1000);
+    } else {
         showManualFallback();
-
     }
-
 }
-
-
-// =====================================================
-// MANUAL FALLBACK
-// =====================================================
 
 function showManualFallback() {
-
-    document.getElementById("manualArea").style.display =
-        "block";
-
-    document.getElementById("manualInput").value =
-        "";
-
-    document.getElementById("status").innerText =
-        "Please enter your answer manually.";
-
+    document.getElementById("manualArea").hidden = false;
+    document.getElementById("manualInput").value = "";
+    document.getElementById("manualInput").focus();
+    document.getElementById("status").textContent = languages[selectedLanguage].text.enterAnswer;
 }
 
+document.getElementById("manualSubmit").addEventListener("click", function () {
+    const text = document.getElementById("manualInput").value;
+    if (!text.trim()) {
+        document.getElementById("manualInput").focus();
+        return;
+    }
+    document.getElementById("manualArea").hidden = true;
+    attempts = 0;
+    validateAnswer(text);
+});
 
-// =====================================================
-// MANUAL SUBMIT
-// =====================================================
-
-document
-    .getElementById("manualSubmit")
-    .addEventListener("click", function () {
-
-        const text =
-            document.getElementById("manualInput").value;
-
-
-        if (text.trim() === "") {
-            return;
-        }
-
-
-        document.getElementById("manualArea").style.display =
-            "none";
-
-
-        attempts = 0;
-
-        validateAnswer(text);
-
-    });
-
-
-// =====================================================
-// FINISH QUESTIONS
-// =====================================================
+document.getElementById("manualInput").addEventListener("keydown", function (event) {
+    if (event.key === "Enter") {
+        document.getElementById("manualSubmit").click();
+    }
+});
 
 function finishQuestions() {
+    const copy = languages[selectedLanguage].text;
+    document.getElementById("questionNumber").textContent = "";
+    document.getElementById("question").textContent = copy.complete;
+    document.getElementById("status").textContent = copy.finding;
+    document.getElementById("listenButton").hidden = true;
+    document.getElementById("speakQuestionButton").hidden = true;
 
-    console.log(
-        "========== FINAL USER DATA =========="
-    );
-
-    console.log(userData);
-
-
-    document.getElementById("questionNumber").innerText =
-        "Complete";
-
-
-    document.getElementById("question").innerText =
-        "✓ All information collected";
-
-
-    document.getElementById("status").innerText =
-        "🔍 Finding suitable schemes...";
-
-
-    document.getElementById("listenButton").style.display =
-        "none";
-
-
-    document.getElementById("speakQuestionButton").style.display =
-        "none";
-
-
-    // IMPORTANT:
-    // Directly run matching.
-
-    findSchemes();
-
+    schemesPromise.then(function (schemes) {
+        findSchemes(schemes);
+    }).catch(function (error) {
+        console.error("Unable to load scheme data:", error);
+        document.getElementById("results").textContent = copy.dataError;
+        document.getElementById("status").textContent = copy.dataError;
+        speakText(copy.dataError, selectedLanguage);
+    });
 }
 
-
-// =====================================================
-// FIND ELIGIBLE SCHEMES
-// =====================================================
-
-function findSchemes() {
-
-    const results =
-        document.getElementById("results");
-
-
-    const age =
-        Number(userData.age);
-
-    const occupation =
-        userData.occupation;
-
-    const income =
-        Number(userData.income);
-
-    const state =
-        userData.state;
-
-
-    console.log("================================");
-
-    console.log("AGE:", age);
-
-    console.log("OCCUPATION:", occupation);
-
-    console.log("INCOME:", income);
-
-    console.log("STATE:", state);
-
-    console.log("================================");
-
-
-    // ---------------- MATCH ----------------
-
-    const matches =
-        schemes.filter(function (scheme) {
-
-            const ageMatch =
-                age >= scheme.minAge &&
-                age <= scheme.maxAge;
-
-
-            const incomeMatch =
-                income <= scheme.maxIncome;
-
-
-            const occupationMatch =
-                occupation === scheme.occupation;
-
-
-            const stateMatch =
-                state === scheme.state ||
-                scheme.state === "all";
-
-
-            console.log(
-                scheme.name,
-                "=>",
-                ageMatch,
-                incomeMatch,
-                occupationMatch,
-                stateMatch
-            );
-
-
-            return (
-                ageMatch &&
-                incomeMatch &&
-                occupationMatch &&
-                stateMatch
-            );
-
-        });
-
-
-    console.log(
-        "MATCHES:",
-        matches
-    );
-
-
-    // =================================================
-    // MATCH FOUND
-    // =================================================
-
-    if (matches.length > 0) {
-
-        results.innerHTML = `
-
-            <h2>🟢 Potential Schemes</h2>
-
-            ${matches.map(function (scheme) {
-
-                return `
-
-                    <div class="scheme-card">
-
-                        <h3>
-                            ${scheme.name}
-                        </h3>
-
-                        <p>
-                            <b>Benefit:</b>
-                            ${scheme.benefit}
-                        </p>
-
-                        <p>
-                            <b>Required Documents:</b>
-                        </p>
-
-                        <ul>
-
-                            ${scheme.documents
-                                .map(function (doc) {
-
-                                    return `
-                                        <li>${doc}</li>
-                                    `;
-
-                                })
-                                .join("")}
-
-                        </ul>
-
-                        <p>
-                            ⚠️ You may be eligible
-                            based on the information
-                            provided.
-                        </p>
-
-                    </div>
-
-                `;
-
-            }).join("")}
-
-
-        `;
-
-
-        document.getElementById("status").innerText =
-            "✅ Scheme matching completed.";
-
-
-        // -------- SPEAK RESULT --------
-
-        let speechText =
-            "Potential schemes found. ";
-
-
-        matches.forEach(function (scheme) {
-
-            speechText +=
-                scheme.name +
-                ". " +
-                scheme.benefit +
-                ". ";
-
-        });
-
-
-        const speech =
-            new SpeechSynthesisUtterance(
-                speechText
-            );
-
-
-        speech.lang =
-            selectedLanguage;
-
-
-        window.speechSynthesis.speak(
-            speech
-        );
-
-    }
-
-
-    // =================================================
-    // NO MATCH
-    // =================================================
-
-    else {
-
-        results.innerHTML = `
-
-            <h2>❌ No matching schemes found</h2>
-
-            <p>
-                No matching scheme was found
-                based on the information provided.
-            </p>
-
-            <p>
-                Please verify your information
-                and try again.
-            </p>
-
-        `;
-
-
-        document.getElementById("status").innerText =
-            "No matching scheme found.";
-
-
-        speakInSelectedLanguage(voiceText);
-
-    }
-
+function escapeHtml(value) {
+    return String(value).replace(/[&<>"']/g, function (character) {
+        return {
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        }[character];
+    });
 }
-// =====================================================
-// SPEAK RESULT IN SELECTED LANGUAGE
-// =====================================================
 
-function speakInSelectedLanguage(text) {
-
-    window.speechSynthesis.cancel();
-
-    const speech = new SpeechSynthesisUtterance(text);
-
-    speech.lang = selectedLanguage;
-
-    speech.rate = 0.85;
-    speech.pitch = 1;
-
-    const voices = window.speechSynthesis.getVoices();
-
-    // Find voice for selected language
-    let selectedVoice = voices.find(function(voice) {
-
-        return voice.lang
-            .toLowerCase()
-            .startsWith(selectedLanguage.toLowerCase());
-
+function findSchemes(schemes) {
+    const copy = languages[selectedLanguage].text;
+    const age = Number(userData.age);
+    const income = Number(userData.income);
+    const state = userData.state;
+    const matches = schemes.filter(function (scheme) {
+        const ageMatch = age >= scheme.minAge && age <= scheme.maxAge;
+        const incomeMatch = income <= scheme.maxIncome;
+        const occupationMatch = userData.occupation === scheme.occupation;
+        const stateMatch = state === scheme.state || scheme.state === "all";
+        return ageMatch && incomeMatch && occupationMatch && stateMatch;
     });
 
-    // Use matching language voice
-    if (selectedVoice) {
-
-        speech.voice = selectedVoice;
-
-        console.log(
-            "Using voice:",
-            selectedVoice.name,
-            selectedVoice.lang
-        );
-
-    } else {
-
-        console.log(
-            "No exact language voice found."
-        );
-
+    const results = document.getElementById("results");
+    if (!matches.length) {
+        results.innerHTML =
+            "<h2>" + escapeHtml(copy.noMatch) + "</h2><p>" +
+            escapeHtml(copy.noMatchDetails) + "</p>";
+        document.getElementById("status").textContent = copy.noMatch;
+        speakText(copy.noMatchDetails, selectedLanguage);
+        return;
     }
 
-    window.speechSynthesis.speak(speech);
+    results.innerHTML = "<h2>" + escapeHtml(copy.schemes) + "</h2>" +
+        matches.map(function (scheme) {
+            const translation = scheme.translations[selectedLanguage];
+            if (!translation || !Array.isArray(translation.documents)) {
+                throw new Error("Missing " + selectedLanguage + " translation for " + scheme.id + ".");
+            }
+            return "<article class=\"scheme-card\"><h3>" + escapeHtml(translation.name) +
+                "</h3><p>" + escapeHtml(translation.description) + "</p><p><b>" +
+                escapeHtml(copy.benefit) + ":</b> " + escapeHtml(translation.benefit) +
+                "</p><p><b>" + escapeHtml(copy.documents) + ":</b></p><ul>" +
+                translation.documents.map(function (documentName) {
+                    return "<li>" + escapeHtml(documentName) + "</li>";
+                }).join("") + "</ul><p>" + escapeHtml(copy.eligibility) + "</p></article>";
+        }).join("");
+    document.getElementById("status").textContent = copy.matchingDone;
+    speakText(copy.schemes + ". " + matches.map(function (scheme) {
+        const translation = scheme.translations[selectedLanguage];
+        return translation.name + ". " +translation.description + ". " + translation.benefit+". " + translation.documents.join(", ");
+    }).join(". "), selectedLanguage);
 }
-
-
-// Load voices
-window.speechSynthesis.onvoiceschanged = function() {
-
-    console.log(
-        "Available voices:",
-        window.speechSynthesis.getVoices()
-    );
-
-};
