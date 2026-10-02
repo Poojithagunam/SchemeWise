@@ -1,108 +1,71 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="kn">
 <head>
-
-    <title>SchemeWise</title>
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#163A5F">
+    <title>SchemeWise - Government Scheme Guide</title>
     <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
-
-    <h1>SchemeWise</h1>
-
-    <!-- LANGUAGE SELECTION -->
-
-    <div id="languageScreen">
-
-        <h2>Select Your Language</h2>
-
-        <button onclick="selectLanguage('kn-IN')">
-            ಕನ್ನಡ
-        </button>
-
-        <button onclick="selectLanguage('te-IN')">
-            తెలుగు
-        </button>
-
-        <button onclick="selectLanguage('hi-IN')">
-            हिन्दी
-        </button>
-
-    </div>
-
-
-    <!-- MAIN QUESTION SCREEN -->
-
-    <div id="appScreen" style="display:none;">
-
-        <h2 id="questionNumber">
-            Question 1 of 4
-        </h2>
-
-        <h3 id="question">
-            Question
-        </h3>
-
-        <button id="speakQuestionButton">
-            🔊 Hear Question
-        </button>
-
-        <br><br>
-
-        <button id="listenButton">
-            🎤 Speak Answer
-        </button>
-
-        <p>
-            <b>Recognized Answer:</b>
-        </p>
-
-        <p id="result">
-            Waiting for your answer...
-        </p>
-
-        <p id="status">
-            Waiting...
-        </p>
-
-        <p id="attempt">
-            Attempt 1 of 5
-        </p>
-
-
-        <!-- MANUAL FALLBACK -->
-
-        <div id="manualArea" style="display:none;">
-
-            <h3>Enter your answer manually</h3>
-
-            <input
-                type="text"
-                id="manualInput"
-                placeholder="Enter answer"
-            >
-
-            <br><br>
-
-            <button id="manualSubmit">
-                Submit Answer
-            </button>
-
+    <header class="site-header">
+        <div class="brand-mark" aria-hidden="true">S</div>
+        <div>
+            <h1>SchemeWise</h1>
+            <p>Government schemes, explained simply</p>
         </div>
+    </header>
 
+    <main>
+        <section id="languageScreen" class="welcome-card" aria-labelledby="welcomeTitle">
+            <p class="eyebrow">A friendly guide assistance </p>
+            <h2 id="welcomeTitle">ನಮಸ್ಕಾರ! ಸ್ವಾಗತ</h2>
+            <p id="intro" class="intro-copy"></p>
+            <p class="language-instructions"> · ಭಾಷೆಯನ್ನು ಆಯ್ಕೆಮಾಡಿ ·भाषा चुनें · భాషను ఎంచుకోండి</p>
+            <div class="language-buttons" role="group" aria-label="Select your language">
+                <button type="button" data-language="kn-IN" class="language-choice">
+                    <span class="choice-number">1</span><span>ಕನ್ನಡ</span>
+                </button>
+                <button type="button" data-language="hi-IN" class="language-choice">
+                    <span class="choice-number">2</span><span>हिन्दी</span>
+                </button>
+                <button type="button" data-language="te-IN" class="language-choice">
+                    <span class="choice-number">3</span><span>తెలుగు</span>
+                </button>
+            </div>
+            <p class="keyboard-hint">You can also press 1, 2 or 3 on your keyboard.</p>
+            <button id="replayWelcome" class="replay-button" type="button">🔊 Hear the welcome again</button>
+        </section>
 
-        <!-- FINAL RESULTS -->
+        <section id="appScreen" class="question-card" aria-live="polite" hidden>
+            <p id="questionNumber" class="question-progress"></p>
+            <h2 id="question">Question</h2>
+            <div class="question-actions">
+                <button id="listenButton" class="primary-button" type="button">🎤 Speak Answer</button>
+                <button id="speakQuestionButton" class="secondary-button" type="button">🔊 Hear Question</button>
+            </div>
+            <section class="answer-panel" aria-labelledby="answerLabel">
+                <h3 id="answerLabel">Recognized answer</h3>
+                <p id="result">Waiting for your answer...</p>
+                <p id="status" role="status" aria-live="polite">Waiting...</p>
+                <p id="attempt" class="attempt-copy">Attempt 1 of 5</p>
+            </section>
 
-        <div id="results"></div>
+            <div id="manualArea" class="manual-area" hidden>
+                <label for="manualInput">Enter your answer</label>
+                <div class="manual-controls">
+                    <input type="text" id="manualInput" autocomplete="off">
+                    <button id="manualSubmit" class="secondary-button" type="button">Submit answer</button>
+                </div>
+            </div>
+            <div id="results" class="results" aria-live="polite"></div>
+        </section>
+    </main>
 
-    </div>
-
+    <footer>
+        <p>SchemeWise helps you discover schemes. Final eligibility is decided by the relevant government department.</p>
+    </footer>
 
     <script src="script.js"></script>
-
 </body>
-
 </html>
